@@ -7,6 +7,7 @@ import mongoose from "mongoose"
 import MongoStore from "connect-mongo"
 import session from "express-session"
 import { ATLAS_DIR } from "./config/servidor.js"
+import { passportInitialize, passportSession } from "./middlewares/passport.js"
 
 const app = express()
 const connection = mongoose.connect(ATLAS_DIR,({
@@ -33,8 +34,7 @@ app.use(session({
     saveUninitialized: false
 }))
 
-
-
+app.use(passportInitialize, passportSession)
 
 app.use("/", viewsRouter)
 app.use("/api/sessions", sessionRouter)

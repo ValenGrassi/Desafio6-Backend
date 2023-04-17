@@ -12,7 +12,8 @@ loginForm.addEventListener('submit', event => {
             'Content-Type': 'application/json'
         }
     }).then(result => {
-        if (result.status === 200) {
+        console.log(result.status)
+        if (result.status === 201) {
             window.location.replace('/user')
         }
     })

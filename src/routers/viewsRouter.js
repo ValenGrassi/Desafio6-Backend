@@ -2,8 +2,6 @@ import {Router} from "express"
 
 const router = Router()
 
-
-
 router.get("/registro", (req,res,next) => {
     res.render("register", {pageTitle: "Registro"})
 })
@@ -13,12 +11,11 @@ router.get("/login", (req,res,next) => {
 })
 
 router.get("/", (req,res,next) => {
-    res.redirect("/login")
+    res.redirect("/user")
 })
 
 router.get("/user", (req,res,next) => {
     res.render("user", {pageTitle: "User", user: req.session.user})
-    console.log(req.session.user)
 })
 
 export default router
